@@ -51,7 +51,7 @@ const Header = () => {
         className={cs.cx(["btn", "hover", "--bg"])}
         onClick={(event) => handleClick(event, "login")}
       >
-        <Login isActive={menu === "login" ? true : false} />
+        <Login />
       </button>
     </header>
   );
