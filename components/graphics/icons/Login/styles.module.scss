@@ -1,0 +1,43 @@
+.login {
+  height: 100%;
+}
+
+.line {
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: var(--dashes, 22) var(--gaps, 100);
+  stroke-dashoffset: var(--offset, 43);
+
+  --transition-props: stroke-dasharray, stroke-dashoffset, opacity;
+  --transition-duration: 0.8s, 0.8s, 0s;
+  --transition-timing: var(--transition-bounce), var(--transition-bounce),
+    linear;
+}
+
+.line--3 {
+  --dashes: 68;
+  --offset: 0;
+  opacity: 1;
+}
+
+.login.is-active {
+  > .line {
+    --transition-delay: 0s, 0s, 0.55s;
+  }
+
+  > .line.line--1,
+  .line.line--2 {
+    --offset: 112;
+  }
+
+  > .line.line--3 {
+    --dashes: 0;
+    --offset: -32;
+    --gaps: 200;
+    opacity: 0;
+  }
+}

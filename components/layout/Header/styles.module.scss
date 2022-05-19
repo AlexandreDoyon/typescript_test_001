@@ -1,0 +1,33 @@
+@use "sass/abstracts" as *;
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  color: var(--color-txt-3);
+  background-color: var(--color-background-2);
+}
+
+.hover:hover {
+  color: var(--color-txt-2);
+
+  &.--bg {
+    background-color: var(--color-background-3);
+  }
+}
+
+.btn,
+.home {
+  height: 70px;
+}
+
+.home {
+  padding: 8px;
+
+  &-title {
+    font-weight: 600;
+    font-size: rem(22px);
+    line-height: rem(26px);
+    margin: rem(2px);
+  }
+}

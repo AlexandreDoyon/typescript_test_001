@@ -1,0 +1,17 @@
+[class*="container"] {
+  width: min(100% - var(--padding, 2rem), var(--max-width, 60rem));
+}
+
+.container {
+  &-narrow {
+    --max-width: 40rem;
+  }
+
+  &-wide {
+    --max-width: 80rem;
+  }
+
+  &-full {
+    --max-width: 100%;
+  }
+}

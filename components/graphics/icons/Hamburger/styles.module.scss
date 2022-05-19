@@ -1,0 +1,35 @@
+.hamburger {
+  height: 100%;
+}
+
+.line {
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: var(--dashes, 24) var(--gaps, 126);
+  stroke-dashoffset: var(--offset, -38);
+
+  --transition-props: stroke-dasharray, stroke-dashoffset;
+  --transition-duration: 0.8s;
+  --transition-timing: var(--transition-bounce);
+}
+
+.line--2 {
+  --gaps: 70;
+}
+
+.hamburger.is-active {
+  > .line.line--1,
+  .line.line--3 {
+    --dashes: 22;
+    --offset: -94;
+  }
+
+  > .line.line--2 {
+    --dashes: 0;
+    --offset: -50;
+  }
+}
