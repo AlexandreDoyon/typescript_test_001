@@ -1,14 +1,18 @@
 import styles from "./styles.module.scss";
 import ClassNames from "utils/ClassNames";
 
-interface LoginProps {
-  active: boolean;
-}
+/*interface LoginProps {
+  isActive: boolean;
+}*/
+
 const cs = new ClassNames(styles);
-const Login: React.FC<LoginProps> = ({ active }: LoginProps) => {
+
+//const Login: React.FC<LoginProps> = ({ isActive }: LoginProps) => {
+
+const Login = () => {
   return (
     <svg
-      className={cs.cx(["login", { "is-active": active }])}
+      className={cs.cx(["login"])}
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
     >
