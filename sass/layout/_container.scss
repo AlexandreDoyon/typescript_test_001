@@ -1,8 +1,8 @@
-[class*="container"] {
+[class*="l-container"] {
   width: min(100% - var(--padding, 2rem), var(--max-width, 60rem));
 }
 
-.container {
+.l-container {
   &-narrow {
     --max-width: 40rem;
   }

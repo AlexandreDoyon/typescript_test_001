@@ -1,7 +1,4 @@
-import { useContext } from "react";
-
-import { AppContext } from "context/AppContext";
-
+import useScrollY from "hooks/useScrollY";
 import ClassNames from "utils/ClassNames";
 import styles from "./styles.module.scss";
 
@@ -19,18 +16,20 @@ const Parallax: React.FC<ParallaxProps> = ({
   height,
 }: ParallaxProps) => {
   const cs = new ClassNames(styles);
-  const scrollY = useContext(AppContext)! as number;
+  const translateY = useScrollY(speed);
 
   if (type === "image") {
     return (
-      <div
-        className={cs.cx(["parallax_container"])}
-        style={{
-          transform: "translate3d(0px, -" + scrollY * speed + "px, 0px)",
-          backgroundImage: "url(" + src + ")",
-          height: height + "px",
-        }}
-      />
+      <>
+        <div className={cs.cx(["parallax"], "parallax")} />
+        <style jsx>{`
+          .parallax {
+            transform: translate3d(0px, -${translateY}px, 0px);
+            background-image: url(${src});
+            height: ${height}px;
+          }
+        `}</style>
+      </>
     );
   } else {
     return <div />;

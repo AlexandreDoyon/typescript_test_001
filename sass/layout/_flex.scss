@@ -1,10 +1,10 @@
-[class*="flex"] {
+[class*="l-flex"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.flex {
+.l-flex {
   &-justify {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;

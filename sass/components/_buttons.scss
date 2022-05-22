@@ -15,8 +15,8 @@
     --bg-hover:
 */
 
-[class^="button"],
-[class*="button"] {
+[class^="c-button"],
+[class*="c-button"] {
   display: inline-block;
   text-decoration: none;
 
@@ -36,7 +36,7 @@
   }
 }
 
-.button-secondary {
+.c-button-secondary {
   --color-text: var(--color-light);
   --color-bg: var(--color-secondary);
   --color-text-hover: var(--color-secondary);

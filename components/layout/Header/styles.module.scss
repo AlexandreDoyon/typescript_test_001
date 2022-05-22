@@ -1,6 +1,6 @@
 @use "sass/abstracts" as *;
 
-.navbar {
+.header {
   width: 100%;
   position: fixed;
   z-index: 100;
@@ -8,17 +8,16 @@
   background-color: var(--color-background-2);
 }
 
-.hover:hover {
-  color: var(--color-txt-2);
-
-  &.--bg {
-    background-color: var(--color-background-3);
-  }
-}
-
-.btn,
-.home {
+.button {
   height: 70px;
+
+  &:hover {
+    color: var(--color-txt-2);
+
+    &:not(.home) {
+      background-color: var(--color-background-3);
+    }
+  }
 }
 
 .home {

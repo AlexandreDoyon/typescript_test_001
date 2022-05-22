@@ -4,15 +4,31 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
-import { AppContext } from "context/AppContext";
+import useScrollY from "hooks/useScrollY";
+
+import { ThemeContext } from "context/ThemeContext";
+import { ScrollYContext } from "context/ScrollYContext";
 import Parallax from "components/modules/Parallax";
+import Background from "components/modules/Background";
 
 import styles from "./styles.module.scss";
 import ClassNames from "utils/ClassNames";
 
+import { SetTheme } from "interfaces";
+
 const Home: NextPage = () => {
-  const scrollY = useContext(AppContext)! as number;
+  const HeroTurquoiseOpacity = useScrollY(0.0011);
+  let { SetThemeColor, SetThemeMode } = useContext(ThemeContext)! as SetTheme;
+
+  SetThemeColor("theme-violet");
+  SetThemeMode("theme-dark");
+
   const cs = new ClassNames(styles);
+
+  // parallax layers speeds
+  const Speeds: number[] = [
+    0, 0.025, 0.06, 0.06, 0.08, 0.13, 0.18, 0.245, 0.345, 0.5, 0.7,
+  ];
 
   return (
     <>
@@ -22,109 +38,78 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className={cs.cx(["hero"])}>
+      <section className={cs.cx(["dev"], "l-flow-x")}>
         <Link href="/tests">
-          <a className={cs.cx(["devLink"], "button")}>TEST DEVELOPMENT</a>
+          <a className={cs.cx(["devLink"], "c-button")}>TEST DEVELOPMENT</a>
         </Link>
 
-        <div className={cs.cx(["hero__parallax"])}>
-          <Parallax
-            speed={0}
-            type="image"
-            src="images/background/hero-parallax-landscape/bg-parallax-landscape-layer-1.png"
-            height={1080}
-          />
+        <Link href="/tests">
+          <a className={cs.cx(["devLink"], "c-button")}>TEST DEVELOPMENT</a>
+        </Link>
+      </section>
 
-          <Parallax
-            speed={0.025}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-2.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.06}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-3.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.06}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-4.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.08}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-5.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.13}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-6.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.18}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-7.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.245}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-8.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.345}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-9.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.5}
-            type="image"
-            src="/images/background/hero-parallax-landscape/bg-parallax-landscape-layer-10.png"
-            height={1080}
-          />
-
-          <Parallax
-            speed={0.7}
-            type="image"
-            src="images/background/hero-parallax-landscape/bg-parallax-landscape-layer-11.png"
-            height={1080}
-          />
+      <section className={cs.cx(["hero"])}>
+        <div className={cs.cx(["hero__background"])}>
+          {Speeds.map((speed: number, index: number) => {
+            return (
+              <Parallax
+                key={index}
+                speed={speed}
+                type="image"
+                src={`images/parallax/parallax${index}@1920x1080.png`}
+                height={1080}
+              />
+            );
+          })}
 
           <Parallax
             speed={1}
             type="image"
-            src="images/background/hero-parallax-landscape/bg-parallax-landscape-layer-12.png"
+            src="images/parallax/parallax11@1920x1350.png"
             height={1350}
           />
+
+          <div
+            className={cs.cx(["hero__content"])}
+            style={{ opacity: HeroTurquoiseOpacity }}
+          ></div>
+        </div>
+      </section>
+
+      <Background
+        opacity={0.0011}
+        primaryColor="turquoise"
+        secondaryColor="black"
+      >
+        <h1>Test</h1>
+      </Background>
+
+      {/*
+      <section className={cs.cx(["cta"])}>
+        <div className={cs.cx(["cta__bg"])}>
+          <div
+            className={cs.cx(["cta__content"])}
+            style={{ opacity: scrollY * 0.0011 }}
+          >
+            <div>
+              <h2>Bienvenue sur MRMP ou Mon Rétablissement Mon Parcours</h2>
+              <p>
+                Nous offrons divers outils pouvant aider les personnes souffrant
+                d&apos;une problématique de santé mentant et les accompagner
+                dans leurs rétablissements{" "}
+              </p>
+              <p>
+                <strong>Voici comme nous pouvons vous aider...</strong>
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div
-          className={cs.cx(["hero__cover"])}
-          style={{ opacity: scrollY * 0.0011 }}
-        ></div>
-      </section>
-      <section className={cs.cx(["cta"])}>
-        <div className={cs.cx(["cta__bg"])}></div>
-        <div
-          className={cs.cx(["cta__content"])}
-          style={{ opacity: scrollY * 0.0011 }}
-        ></div>
-      </section>
+        <section className={cs.cx(["cta"])}>
+          <h2>Est-ce que ... ?</h2>
+        </section>
+      </section> 
+      */}
     </>
   );
 };
