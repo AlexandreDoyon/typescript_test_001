@@ -83,33 +83,6 @@ const Home: NextPage = () => {
       >
         <h1>Test</h1>
       </Background>
-
-      {/*
-      <section className={cs.cx(["cta"])}>
-        <div className={cs.cx(["cta__bg"])}>
-          <div
-            className={cs.cx(["cta__content"])}
-            style={{ opacity: scrollY * 0.0011 }}
-          >
-            <div>
-              <h2>Bienvenue sur MRMP ou Mon Rétablissement Mon Parcours</h2>
-              <p>
-                Nous offrons divers outils pouvant aider les personnes souffrant
-                d&apos;une problématique de santé mentant et les accompagner
-                dans leurs rétablissements{" "}
-              </p>
-              <p>
-                <strong>Voici comme nous pouvons vous aider...</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <section className={cs.cx(["cta"])}>
-          <h2>Est-ce que ... ?</h2>
-        </section>
-      </section> 
-      */}
     </>
   );
 };
