@@ -7,7 +7,6 @@ import Image from "next/image";
 import useScrollY from "hooks/useScrollY";
 
 import { ThemeContext } from "context/ThemeContext";
-import { ScrollYContext } from "context/ScrollYContext";
 import Parallax from "components/modules/Parallax";
 import Background from "components/modules/Background";
 
